@@ -3,6 +3,8 @@ import java.util.Scanner;
 //Remember that Java is statically typed. i.e. Variables are always given types, unlike dynamic typing in python etc.
 public class Playground {
 
+    String jeezuz = "Oh jeezuz!";
+
     //Every Java programme is contained in a strictly public class that matches the name of the file.
     //The class contains a strictly public main method(i.e. function) named 'public static void main(String[] arg){}'.
 
@@ -14,9 +16,24 @@ public class Playground {
     //We can use args[] like from Python to parse in values from the command line.
 
     public static void main(String[] arg) {
+
+        forPlayOP();
+
+        Playground c = new Playground();
+
+        //c.loopOP();
+
+        bitwiseOP();
+
+        c.taco();
+
+
+
+        compareOP();
         //Main function always executes main method. There are exceptions. Libraries for examples.
         String x = "How are you doing, fellow kids?";
         System.out.println(x);
+
         //System is a class. Out is a member of system. Println is a method contained in out.
 
         //To take input, we must first create a scanner as follows.
@@ -40,9 +57,6 @@ public class Playground {
         float g = (int)scanner.nextFloat();
         System.out.println(g);
 
-        Playground c = new Playground();
-        c.taco();
-
         //There are two main object types
         //Primitive types - boolean, byte, char, int, long, short, float, double
         int num = 5; //Primitive type
@@ -53,7 +67,6 @@ public class Playground {
         final int init = 10; //The final keyword makes the variable init a constant.
 
         String z = new String("Hello There"); //property
-
 
         boolean isComputer = true; //Declaring boolean
         byte b = 'b';//Stores byte value of  literals(numbers and strings) using ASCII table. Is 32 bits
@@ -71,12 +84,17 @@ public class Playground {
         //We call mathOP in the main function without creating a new playground object because it is static.
         mathOP();
 
-
         //All because stringOP() is not a static method.
         Playground strOP =  new Playground();
         strOP.stringOP();
-    }
 
+        //Accessing the 'name' property from the newly created class, Userground
+        Userground user = new Userground();
+        user.fname = "Toufiq";
+        user.lname = "Musah";
+
+        System.out.println(user.getFullName());//This line accesses the method from the new class and outputs a full name.
+    }
     //Let's put some of the new topics in to methods of their own
 
     public void taco(){
@@ -98,7 +116,6 @@ public class Playground {
         Integer xyx = Integer.valueOf(zx);//Gives the int value of a String or int. i.e. String to int. Is an object.
         int xx = Integer.parseInt(monpere);//Same as above but is a primitive
         System.out.println("xx is:" + xx);
-
     }
 
     public void stringOP(){
@@ -125,6 +142,117 @@ public class Playground {
         jeez.repeat(12);//Repeats the string the number of requested times.
         jeez.equals("Yes");//Checks if values are same, returning true or false. Similar to compare.
         jeez.compareTo("Yes");//Like above??
+
+        //In comparing strings, it is best to use equals(or compareTo).
+        //Can't use == for cases in conditional statements because of different types.
+        //It works with primitives, but not objects(Because the value of an object is just a reference to it)psst. Reference type.
+        //In using ==, the programme looks at a block of memory to compare them.
+    }
+
+    public static void controlOP(){
+        Playground play = new Playground();
+
+        System.out.println(play.jeezuz);
+        int x = 10;
+        if(x == 10){
+            System.out.println(true);
+            return;
+            //Adding return at the end ensures that the function stops executing there. Assuming there are any other statements below it, if the condition passes, it will stop executing.
+        }
+        System.out.println("This will not execute thanks to the return statement");
+    }
+
+    public static void compareOP(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("How old are you?");
+        int age = scanner.nextInt();
+        System.out.println("Cats or Dogs");
+
+        String xxx = scanner.nextLine();
+        String nam_e = scanner.nextLine();
+
+        if(age>12 && nam_e.equals("Cats")){
+            System.out.println("You passed. Nice");
+//            Notice the comparisson ops. Same as C programming.
+        }
+        else{
+            System.out.println("Not Welcome");
+        }
+
+        //Maybe learn to define stuff out of the conditions
+        //Let's try a switch case. NB: Break; prevents a fallthrough.
+        switch (nam_e) {
+            case "Cats":
+                System.out.println("Same here");
+                break;
+            case "Dogs":
+                System.out.println("Welp Hate them");
+                break;
+            default:
+                System.out.println("Let's Go then");
+        }
+    }
+
+    public static void tenaryOP(){
+        //Works on three conditions
+        String well = "Wellman";
+
+        boolean act_Well = well.equals("Wellman")? true : false; //We could assign ints, Strings etc.
+    }
+
+    public void loopOP(){
+        /*icu
+        * initialisation
+        * comparison/Condition
+        * update
+        */
+
+        for(int x = 0; x<=5; x++){
+            System.out.println("This is "+ x);
+        }//So, Similar to C, huh?
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Password Here:");
+        String passCode = scanner.nextLine();
+        while (!passCode.equals("Fret")){
+            System.out.println("Enter Password Here:");
+            passCode = scanner.nextLine();
+        }//This might work best with a do while loop. No code repitition.
+        scanner.close();//Best use this when done with a scanner to prevent memory leaks. System warnings and all. Correct all?
+
+        System.out.println("Congrats!");
+
+        int i = 0;
+        while (i<10){
+            System.out.println("Well this is:"+ i);
+            i++;//Yes, runs!
+        }
+    }
+
+    public static void forPlayOP() {
+
+        for (int i = 9; i >= 0; i--) {
+            for (int j = i; j >= 0; j--) {//Manipulating values etc creates the effect. j=i e.g. creates a slanted triangle.
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+
+        /*
+        * In Using BREAK(break), the entire process breaks out of an inner loop, exiting where available.
+        * If in an outer loop, that loop breaks.
+        * In using CONTINUE(continue),exits just the particular iteration of a loop, and not the loop itself.
+        * This implies that when the continue condition is meat, the iteration ends and the loop restarts.
+        */
+    }
+
+    public static void bitwiseOP(){
+        int jk = 1;
+        System.out.println("jk = "+jk);
+        int ytho = ~jk;
+        System.out.println("ytho = "+ ytho);
+        //The output is -(plus one). Ought to learn bitwise operations.
     }
 }
 
