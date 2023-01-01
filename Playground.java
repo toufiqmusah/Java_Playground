@@ -1,4 +1,5 @@
 import java.security.spec.RSAOtherPrimeInfo;
+import java.util.Arrays;
 import java.util.Scanner;
 //Remember that Java is statically typed. i.e. Variables are always given types, unlike dynamic typing in python etc.
 public class Playground {
@@ -16,6 +17,7 @@ public class Playground {
     //We can use args[] like from Python to parse in values from the command line.
 
     public static void main(String[] arg) {
+        arrayOP();
 
         forPlayOP();
 
@@ -26,8 +28,6 @@ public class Playground {
         bitwiseOP();
 
         c.taco();
-
-
 
         compareOP();
         //Main function always executes main method. There are exceptions. Libraries for examples.
@@ -238,7 +238,6 @@ public class Playground {
             }
             System.out.println();
         }
-
         /*
         * In Using BREAK(break), the entire process breaks out of an inner loop, exiting where available.
         * If in an outer loop, that loop breaks.
@@ -254,6 +253,79 @@ public class Playground {
         System.out.println("ytho = "+ ytho);
         //The output is -(plus one). Ought to learn bitwise operations.
     }
+
+    public static void arrayOP(){
+        int[] ar1 = new int[5];//Position of first sq bracket doesn't matter
+        ar1[0] = 1;
+        System.out.println(ar1[0]);
+
+        int ar2[] = {1,4,5,2,6};
+        System.out.println(ar2[0]);
+        //We can't go beyond the size of the array.
+
+        //To output an entire array
+        System.out.println(Arrays.toString(ar2));
+
+        //Iterating through an array
+        int[] ar3 = new int[5];
+        for(int i = 0; i<5; i++){
+            ar3[i] = 5;
+        }
+        System.out.println(Arrays.toString(ar3));
+
+        //To get user input in an array
+        Scanner scanner = new Scanner(System.in);
+        //Scanner can be used to determine size of array. Don't forget for loop. This is dynamic sizing.
+        int[] ar4 = new int[3];
+        for(int i = 0; i<3; i++){
+            ar4[i] = scanner.nextInt();
+        }
+        System.out.println(Arrays.toString(ar4));
+
+        //Iterating through an array to find a value.
+        for(int i = 0; i<ar2.length; i++){
+            if(ar2[i] == 4){
+                System.out.println(ar2[i]+ ":We got 4");
+            }
+            else{
+                System.out.println(ar2[i]+ ":Welp not 4");
+            }
+        }
+
+        //To sort an array
+        Arrays.sort(ar2);
+        System.out.println(Arrays.toString(ar2));
+
+        //Arrays.equals(ar1, ar2) - To compare an array.
+        //Arrays.fill(ar1, value) - To fill with particular value.
+        //Arrays.asList(ar1) - To return a fixed size list. >>> List<String> testing = Arrays.asList(ar1)
+
+
+        //ROW - FORWARD
+        //COLUMN - DOWN
+        //Declaring 2D arrays
+        int[][] ar2D1 = new int[5][2];//i.e 5 external arrays each with 2 elements.
+        int [][] ar2D2 = {
+                {1,2,4},
+                {3,5,6,7,9},
+                {6,8,12}
+        };//Here we have a staggered array. The internal elements vary in size, which can't be explicitly declared.
+
+        //Iterating through a 2D array. Specifically a staggered one
+        System.out.println(ar2D2.length);//Simply gives length of entire external array.
+        System.out.println(ar2D1[0].length);//Gives length of first internal array.
+
+        for(int i=0;i< ar2D2.length;i++){
+            for(int j=0;j< ar2D2[i].length;j++){
+                System.out.print(ar2D2[i][j]+ "\t");
+
+            }
+            System.out.println();
+        }
+        //Do note that we aren't able to change the size of an array once declared. This can only be done with ArrayLists.
+        
+    }
+
 }
 
 //Class - Contains everything. Has members and properties.
