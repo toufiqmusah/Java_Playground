@@ -1,10 +1,11 @@
 import java.security.spec.RSAOtherPrimeInfo;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.sql.Struct;
+import java.util.*;
+
 //Remember that Java is statically typed. i.e. Variables are always given types, unlike dynamic typing in python etc.
 public class Playground {
 
-    String jeezuz = "Oh jeezuz!";
+    String jeezuz = "Oh";
 
     //Every Java programme is contained in a strictly public class that matches the name of the file.
     //The class contains a strictly public main method(i.e. function) named 'public static void main(String[] arg){}'.
@@ -16,7 +17,15 @@ public class Playground {
 
     //We can use args[] like from Python to parse in values from the command line.
 
-    public static void main(String[] arg) {
+    public static void main(String[] arg){
+        Play_OOP play_oop = new Play_OOP();
+        play_oop.firstName = "Fiq";
+        play_oop.lastName = "Bigger";
+        play_oop.full();
+        play_oop.fullRepeat(3);
+
+        String returnReceiver = play_oop.fullReturn();//The return message is stored at returnReceiver here.
+
         arrayOP();
 
         forPlayOP();
@@ -311,6 +320,7 @@ public class Playground {
                 {6,8,12}
         };//Here we have a staggered array. The internal elements vary in size, which can't be explicitly declared.
 
+        System.out.println("Yeesss" + Arrays.deepToString(ar2D2));//Simplifies it.
         //Iterating through a 2D array. Specifically a staggered one
         System.out.println(ar2D2.length);//Simply gives length of entire external array.
         System.out.println(ar2D1[0].length);//Gives length of first internal array.
@@ -322,8 +332,46 @@ public class Playground {
             }
             System.out.println();
         }
-        //Do note that we aren't able to change the size of an array once declared. This can only be done with ArrayLists.
-        
+
+
+    }
+    //Do note that we aren't able to change the size of an array once declared. This can only be done with ArrayLists.
+
+    //Learn Generics
+    public static void arrListOP(){//ArrayList<Integer>arL1 = new ArrayList<Integer>();
+        //Declaring a list
+        List<Integer> arLst1 = new ArrayList<Integer>();//At the 'ArrayList' section, that could be any other kind of list. Linked list, doubly linked lists, etc.
+        //To add elements to the list one at a time
+        arLst1.add(5);//Psst.. it is still indexed
+        arLst1.add(2, 7);//7 is stored at index 2
+        arLst1.set(1, 5);//Replaces index 1 element w/ value 5
+
+        System.out.println(arLst1.get(1));//This simply outputs value at said index.
+        System.out.println(arLst1.indexOf(5));//This gets the index of the value. -1 returned if it doesn't exist. arList.contains returns T/F
+        //arList.isEmpty checks if it is an empty array. T/F returned
+        arLst1.remove(1);//Removes element at set index.
+        arLst1.clear();//Clears a list
+
+        //Psst.. We can't do the ff. List<Integer> arLst1 = {1,2,3}; Might be better to just convert to array to list.
+        List<Integer> arLst2 = Arrays.asList(1,4,5,6);
+
+        //To output an array, its not that simple
+        System.out.println(Arrays.toString(arLst2.toArray()));//Had to convert list to array.
+
+        //Iterating through an array, and can also adding stuff
+        for(int i = 0; i<arLst2.size();i++){
+            arLst2.set(i, arLst2.get(i)*2);
+            System.out.println(arLst2.get(i));
+
+        }
+        //Creating a 2D list
+        List<List<Integer>> ar2DLst = new ArrayList<List<Integer>>();
+
+        //We can convert Lists to array with .toArray. A complicated and nice way is to use a loop to assign elements of the list to the elements of a new array.
+        //Collection.sort(arLst2);//Sorts a list. .reverse reverses it.
+
+        String [] arString = new String[12]; //Hehe string array
+
     }
 
 }
